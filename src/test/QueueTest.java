@@ -1,8 +1,8 @@
 import model.structures.impl.Queue;
+import org.junit.Assert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import model.structures.impl.Dog;
-import static org.junit.jupiter.api.Assertions.*;
 
 class QueueTest {
     private Queue<Integer> queue;
@@ -26,7 +26,7 @@ class QueueTest {
         queue.enqueue(num);
         int numExpected = queue.front();
 
-        assertEquals( numExpected, num);
+        Assert.assertEquals( numExpected, num);
     }
 
     /**
@@ -45,8 +45,8 @@ class QueueTest {
         queue2.enqueue(sr3);
         String srExpected = queue2.front();
         //Assert (Se evalúa)
-        assertEquals(srExpected, sr1);
-        assertFalse(queue2.isEmpty());
+        Assert.assertEquals(srExpected, sr1);
+        Assert.assertFalse(queue2.isEmpty());
     }
 
     /**
@@ -64,10 +64,10 @@ class QueueTest {
         queue3.enqueue(person2);
         queue3.enqueue(person3);
         //Asrt
-        assertFalse(queue3.isEmpty());
-        assertEquals(person1, queue3.front());
+        Assert.assertFalse(queue3.isEmpty());
+        Assert.assertEquals(person1, queue3.front());
         queue3.dequeue();
-        assertEquals(person2, queue3.front());
+        Assert.assertEquals(person2, queue3.front());
     }
 
     /**
@@ -84,12 +84,13 @@ class QueueTest {
         queue.enqueue(num1);
         queue.enqueue(num2);
         queue.enqueue(num3);
-        assertFalse(queue.isEmpty());
+        Assert.assertFalse(queue.isEmpty());
         //Asrt
         while(!queue.isEmpty()){
             queue.dequeue();
         }
-        assertTrue(queue.isEmpty());
+        Assert.assertTrue(queue.isEmpty());
+        Assert.assertEquals(null, queue.dequeue());
     }
 
     /**
@@ -108,10 +109,10 @@ class QueueTest {
         //Ast
         Dog persondequeued1 = queue3.dequeue();
         Dog persondequeued2 = queue3.dequeue();
-        assertFalse(queue3.isEmpty());
-        assertEquals(person3, queue3.front());
-        assertEquals(person1,persondequeued1);
-        assertEquals(person2,persondequeued2);
+        Assert.assertFalse(queue3.isEmpty());
+        Assert.assertEquals(person3, queue3.front());
+        Assert.assertEquals(person1,persondequeued1);
+        Assert.assertEquals(person2,persondequeued2);
     }
 
     /**
@@ -131,7 +132,7 @@ class QueueTest {
         //As
         String namedequeued1 = queue2.dequeue();
         String namedequeued2 = queue2.dequeue();
-        assertNotEquals(namedequeued1, name3 );
+        Assert.assertNotEquals(namedequeued1, name3 );
 
     }
 }
